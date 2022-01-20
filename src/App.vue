@@ -5,6 +5,9 @@
 </template>
 
 <style lang="scss">
+* {
+   --full-height: 100%;
+}
 
 #app {
   font-family: "Roboto", sans-serif;

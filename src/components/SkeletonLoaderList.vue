@@ -29,7 +29,7 @@ export default {
   margin-bottom: 2rem;
   vertical-align: top;
   display: inline-flex;
-  width: 100%;
+  width: var(--full-height);
 }
 
 .loader-1{

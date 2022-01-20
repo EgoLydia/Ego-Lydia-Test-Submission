@@ -80,7 +80,7 @@ export default {
   border-radius: 0.5rem;
   padding-left: 4rem;
   box-shadow: 0 4px 8px 0 #d3d7dd, 0 6px 20px 0 #d3d7dd;
-  width: 100%;
+  width: var(--full-height);
 }
 
 .search-bar::placeholder {
@@ -89,7 +89,7 @@ export default {
 }
 
 .search-wrapper {
-  width: 100%;
+  width: var(--full-height);
   display: flex;
   justify-content: center;
 }
@@ -99,7 +99,7 @@ export default {
   top: 0;
   left: 0;
   display: flex;
-  height: 100%;
+  height: var(--full-height);
   align-items: center;
   padding-left: 2rem;
   color: #a4acb9;

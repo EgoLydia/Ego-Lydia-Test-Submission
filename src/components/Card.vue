@@ -67,8 +67,8 @@ export default {
 
 .card-img {
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  width: var(--full-height);
+  height: var(--full-height);
 }
 
 .card-overlay {
@@ -76,8 +76,8 @@ export default {
   top: 0;
   left: 0;
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1));
-  width: 100%;
-  height: 100%;
+  width: var(--full-height);
+  height: var(--full-height);
   display: flex;
 }
 
@@ -104,8 +104,8 @@ export default {
   z-index: 1;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  width: var(--full-height);
+  height: var(--full-height);
   display: flex;
   justify-content: center;
   align-content: center;
@@ -124,8 +124,8 @@ export default {
 
 .modal-img {
   object-fit: contain;
-  width: 100%;
-  height: 100%;
+  width: var(--full-height);
+  height: var(--full-height);
   margin-bottom: 0;
   background-repeat: no-repeat;
 }
