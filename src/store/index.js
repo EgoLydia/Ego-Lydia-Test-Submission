@@ -29,7 +29,7 @@ export default new Vuex.Store({
         let images = []
         response.data.forEach(image => {
           images.push({
-            url: image.urls.full,
+            url: image.urls.small,
             author: `${image.user.first_name} ${image.user.last_name}`,
             location: image.user.location
           })
@@ -41,6 +41,31 @@ export default new Vuex.Store({
       }).catch((error)=>{
         console.log(error)
       })
+    },
+    searchImages(context, query) {
+      const searchPromise = new Promise((resolve, reject) => {
+        const response = SERVER.get(`search/photos?page=1&query=${query}`, {
+          headers: {
+              Authorization: ACCESS_KEY
+          }
+        })
+        response.then((response)=>{
+          let images = []
+          response.data.results.forEach(image => {
+            images.push({
+              url: image.urls.small,
+              author: `${image.user.first_name} ${image.user.last_name}`,
+              location: image.user.location
+            })
+            
+          });
+          resolve(images)
+        }).catch((error)=>{
+          reject(error)
+        })
+
+      })
+      return searchPromise
     }
   },
   modules: {
