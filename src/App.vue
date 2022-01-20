@@ -11,4 +11,10 @@
   -moz-osx-font-smoothing: grayscale;
    color: #2c3e50;
 }
+
+.container{
+  padding-left: 14rem;
+  padding-right: 14rem;
+  margin-top: -2.5rem;
+}
 </style>
