@@ -1,11 +1,8 @@
 <template>
   <div>
-    <div v-if="isloading" class="image-loader">
-      <div class="author-loader"></div>
-      <div class="location-loader"></div>
-    </div>
+    <skeleton-loader :isloading="isloading"></skeleton-loader>
     <div v-show="!isloading" @click="openModal" class="card">
-      <img @load="onloaded" class="card-img" :src="image" alt="" />
+      <img @load="onloaded" class="card-img" :src="image.low" alt="" />
       <div class="card-overlay">
         <div class="card-footer">
           <p class="card-title">{{ author }}</p>
@@ -19,7 +16,7 @@
           <i class="ri-close-line"></i>
         </div>
         <div class="modal-content">
-          <img class="modal-img" :src="image" alt="" />
+          <img class="modal-img" :src="image.high" alt="" />
         </div>
         <div class="modal-footer">
           <p class="modal-title">{{ author }}</p>
@@ -31,29 +28,21 @@
 </template>
 
 <script>
+import SkeletonLoader from "../components/SkeletonLoader.vue";
+
 export default {
   name: "Card",
-  props: {
-    image: {
-      type: String,
-      required: true,
-    },
-    author: {
-      type: String,
-      required: true,
-    },
-    location: {
-      type: String,
-      default: "Not Available",
-    },
-  },
+  props: ["image", "location", "author"],
+
   data() {
     return {
       isloading: true,
       showModal: false,
     };
   },
-  components: {},
+  components: {
+    "skeleton-loader": SkeletonLoader,
+  },
   methods: {
     onloaded() {
       this.isloading = false;
@@ -69,6 +58,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 .card {
   border-radius: 0.6rem;
   overflow: hidden;
@@ -85,23 +75,29 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
   width: 100%;
   height: 100%;
   display: flex;
 }
+
 .card-title {
   font-weight: 600;
+  margin-bottom: 0.2rem;
 }
+
 .card-subtitle {
-  font-weight: 100;
-  font-size: 0.875rem;
+  font-weight: 400;
+  font-size: 0.75rem;
+  margin-top: 0;
 }
+
 .card-footer {
   margin-top: auto;
   color: white;
   padding: 0.625rem;
 }
+
 .image-loader {
   background-color: #f5f5f5;
   border-radius: 0.6rem;
@@ -118,11 +114,22 @@ export default {
   width: 30%;
   padding: 0.4rem;
   margin-top: 0.4rem;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: skeleton-animation;
+  animation-timing-function: linear;
 }
+
 .author-loader {
   background-color: #e6e6e6;
   width: 50%;
   padding: 0.4rem;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: skeleton-animation;
+  animation-timing-function: linear;
 }
 
 .modal {
@@ -140,45 +147,68 @@ export default {
 }
 
 .modal-content {
-  background-color: #fefefe;
-  // padding: 20px;
-  border: 1px solid #888;
+  background-color: black;
   margin-right: 4rem;
-  border-radius: 0.625rem;
-  // height: 100%;
+  max-height: 80%;
+  overflow: hidden;
+  border-top-left-radius: 0.625rem;
+  border-top-right-radius: 0.625rem;
 }
+
 .modal-wrapper {
-  width: 80%;
-  margin: 2rem 0;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
+
 .modal-img {
-  background-size: contain;
+  object-fit: contain;
   width: 100%;
-  max-height: 100%;
+  height: 100%;
   margin-bottom: 0;
+  background-repeat: no-repeat;
 }
+
 .modal-footer {
   background-color: white;
-  padding-left: 2rem;
+  padding: 2rem;
+  padding-top: 0;
   margin-right: 4rem;
-  border-style: none;
+  border-bottom-left-radius: 0.625rem;
+  border-bottom-right-radius: 0.625rem;
 }
+
 .modal-title {
   font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 0;
 }
+
 .modal-subtitle {
   font-weight: 100;
   font-size: 0.875rem;
+  margin-top: 0;
 }
+
 .close {
-  color: #aaa;
+  color: rgb(190, 188, 188);
   font-size: 1.75rem;
   margin-left: auto;
 }
+
 .close:hover,
 .close:focus {
   cursor: pointer;
+}
+
+@keyframes skeleton-animation {
+  0% {
+    background-position: -33.4286rem 0;
+  }
+  100% {
+    background-position: 33.4286rem 0;
+  }
 }
 </style>
