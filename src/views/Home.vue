@@ -17,20 +17,25 @@
       </div>
     </top-bar>
     <div class="container">
-      <staggered-gallery :images="images"></staggered-gallery>
+      <skeleton-loader-list v-if="isBusy"></skeleton-loader-list>
+      <staggered-gallery v-else :images="images"></staggered-gallery>
     </div>
   </div>
 </template>
 
 <script>
 import TopBar from "../components/TopBar.vue";
-import StaggeredGallery from "../components/StaggeredGallery.vue"
+import StaggeredGallery from "../components/StaggeredGallery.vue";
+import SkeletonLoaderList from "../components/SkeletonLoaderList.vue";
+import base from "../mixins/base";
 
 export default {
   name: "Home",
+  mixins: [base],
   components: {
     "top-bar": TopBar,
     "staggered-gallery": StaggeredGallery,
+    "skeleton-loader-list": SkeletonLoaderList,
   },
   computed: {
     images() {
@@ -46,14 +51,30 @@ export default {
     onEnter() {
       this.$router.push(`/search?query=${this.searchString}`);
     },
+    fetchImages() {
+      this.beginLoading(`Fetching images`);
+      this.resetError();
+      this.$store
+        .dispatch("fetchImages")
+        .then(() => {
+          this.finishLoading();
+        })
+        .catch((error) => {
+          this.setError(error);
+          console.log(error);
+        })
+        .finally(() => {
+        });
+    },
   },
   mounted() {
-    this.$store.dispatch("fetchImages");
+    this.fetchImages();
   },
 };
 </script>
 
 <style scoped lang="scss">
+
 .search-bar {
   padding: 1.2rem;
   border: none;
