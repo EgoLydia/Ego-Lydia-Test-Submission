@@ -82,12 +82,12 @@ export default {
 }
 
 .card-title {
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 0.2rem;
 }
 
 .card-subtitle {
-  font-weight: 400;
+  font-weight: 300;
   font-size: 0.75rem;
   margin-top: 0;
 }
@@ -96,6 +96,7 @@ export default {
   margin-top: auto;
   color: white;
   padding: 0.625rem;
+  padding-left: 1.5rem
 }
 
 .image-loader {
