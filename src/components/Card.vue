@@ -113,18 +113,10 @@ export default {
   background-color: #7d7e81cb;
 }
 
-.modal-content {
-  background-color: black;
-  margin-right: 4rem;
-  max-height: 75%;
-  overflow: hidden;
-  border-top-left-radius: 0.625rem;
-  border-top-right-radius: 0.625rem;
-}
-
 .modal-wrapper {
   margin-top: 2rem;
   margin-bottom: 2rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -136,15 +128,6 @@ export default {
   height: 100%;
   margin-bottom: 0;
   background-repeat: no-repeat;
-}
-
-.modal-footer {
-  background-color: white;
-  padding: 2rem;
-  padding-top: 0;
-  margin-right: 4rem;
-  border-bottom-left-radius: 0.625rem;
-  border-bottom-right-radius: 0.625rem;
 }
 
 .modal-title {

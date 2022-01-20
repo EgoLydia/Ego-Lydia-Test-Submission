@@ -33,6 +33,22 @@
     padding-left: 2rem;
     padding-right: 5rem;
   }
+
+  .modal-content {
+    background-color: black;
+    max-height: 75%;
+    overflow: hidden;
+    border-top-left-radius: 0.625rem;
+    border-top-right-radius: 0.625rem;
+  }
+
+  .modal-footer {
+    background-color: white;
+    padding: 2rem;
+    padding-top: 0;
+    border-bottom-left-radius: 0.625rem;
+    border-bottom-right-radius: 0.625rem;
+  }
 }
 
 @media (min-width: 640px) {
@@ -46,6 +62,22 @@
     column-gap: 3rem;
     column-fill: initial;
     column-count: 1;
+  }
+
+  .modal-content {
+    background-color: black;
+    max-height: 75%;
+    overflow: hidden;
+    border-top-left-radius: 0.625rem;
+    border-top-right-radius: 0.625rem;
+  }
+
+  .modal-footer {
+    background-color: white;
+    padding: 2rem;
+    padding-top: 0;
+    border-bottom-left-radius: 0.625rem;
+    border-bottom-right-radius: 0.625rem;
   }
 }
 
@@ -68,6 +100,26 @@
     column-count: 3;
     padding-left: 2rem;
     padding-right: 5rem;
+  }
+
+  .modal-content {
+    background-color: black;
+    margin-right: 4rem;
+    margin-left: 4rem;
+    max-height: 75%;
+    overflow: hidden;
+    border-top-left-radius: 0.625rem;
+    border-top-right-radius: 0.625rem;
+  }
+
+  .modal-footer {
+    background-color: white;
+    padding: 2rem;
+    padding-top: 0;
+    margin-right: 4rem;
+    margin-left: 4rem;
+    border-bottom-left-radius: 0.625rem;
+    border-bottom-right-radius: 0.625rem;
   }
 }
 
