@@ -27,7 +27,7 @@ export default {
 <style scoped lang="scss">
 
 .loader-list {
-  column-gap: 3rem;
+  column-gap: 5rem;
   column-fill: initial;
   column-count: 3;
 }
@@ -35,7 +35,8 @@ export default {
 .loader {
   margin-bottom: 2rem;
   vertical-align: top;
+  display: inline-flex;
   width: 100%;
-  height: 300px;
+  // height: 300px;
 }
 </style>

@@ -57,7 +57,7 @@ export default {
       this.$store
         .dispatch("fetchImages")
         .then(() => {
-          this.finishLoading();
+          // this.finishLoading();
         })
         .catch((error) => {
           this.setError(error);
