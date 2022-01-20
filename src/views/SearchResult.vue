@@ -1,5 +1,5 @@
 <template>
-  <div class="search-result">
+  <div>
     <top-bar>
       <p class="title" v-if="isBusy">
         Searching for<span class="query"> "{{ query }}"</span>

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div>
     <top-bar>
       <div class="search-wrapper">
         <div class="search-bar-wrapper">
@@ -57,11 +57,10 @@ export default {
       this.$store
         .dispatch("fetchImages")
         .then(() => {
-          // this.finishLoading();
+          this.finishLoading();
         })
         .catch((error) => {
           this.setError(error);
-          console.log(error);
         })
         .finally(() => {
         });

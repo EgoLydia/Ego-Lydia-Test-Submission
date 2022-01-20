@@ -39,14 +39,11 @@ export default new Vuex.Store({
                 location: image.user.location,
               });
             });
-            console.log(images);
-
             context.commit("setImages", images);
             resolve();
           })
           .catch((error) => {
-            console.log(error);
-            reject();
+            reject(error);
           });
       });
       return fetchPromise;
