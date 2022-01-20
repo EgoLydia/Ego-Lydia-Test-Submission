@@ -33,34 +33,24 @@ export default {
 }
 
 .location-loader {
-  background-color: #e6e6e6;
   width: 30%;
   padding: 0.4rem;
   margin-top: 0.4rem;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-name: skeleton-animation;
-  animation-timing-function: linear;
+  animation: skeleton-animation 1s linear infinite alternate;
 }
 
 .author-loader {
-  background-color: #e6e6e6;
   width: 50%;
   padding: 0.4rem;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-name: skeleton-animation;
-  animation-timing-function: linear;
+  animation: skeleton-animation 1s linear infinite alternate;
 }
 
 @keyframes skeleton-animation {
   0% {
-    background-position: -33.4286rem 0;
+    background-color: #e6e6e6;
   }
   100% {
-    background-position: 33.4286rem 0;
+    background-color: #d6d5d5;
   }
 }
 </style>
