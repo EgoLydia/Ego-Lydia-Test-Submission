@@ -1,73 +1,93 @@
 <template>
   <div class="home">
-    <div class="search-bg"> 
-      <input class="search-bar" type="text" placeholder="Search for photos">
-    </div>
-    <div class="card-list">
-      <card v-for="image in images" :key="image.url" :image="image.url" :author="image.author" :location="image.location"></card>
+    <top-bar>
+      <div class="search-wrapper">
+        <div class="search-bar-wrapper">
+          <input
+            @keyup.enter="onEnter"
+            v-model="searchString"
+            class="search-bar"
+            type="text"
+            placeholder="Search for photos"
+          />
+          <div class="search-icon">
+            <i class="ri-search-line"></i>
+          </div>
+        </div>
+      </div>
+    </top-bar>
+    <div class="container">
+      <staggered-gallery :images="images"></staggered-gallery>
     </div>
   </div>
 </template>
 
 <script>
-import Card from "../components/Card.vue"
+import TopBar from "../components/TopBar.vue";
+import StaggeredGallery from "../components/StaggeredGallery.vue"
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    'card': Card
+    "top-bar": TopBar,
+    "staggered-gallery": StaggeredGallery,
   },
   computed: {
-    images(){
-      return this.$store.getters.images
-    }
+    images() {
+      return this.$store.getters.images;
+    },
   },
-  data(){
+  data() {
     return {
-      // images: [
-      //   {
-      //     url:"https://images.unsplash.com/photo-1642365569712-ace9b9704128?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60",
-      //     author: "Fredrick Apata",
-      //     location: "Lagos Nigeria"
-      //   },
-      //   {
-      //     url:"https://images.unsplash.com/photo-1642265365901-3aa869337f0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzM3x8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60",
-      //     author: "Rachel Goodymoore",
-      //     location: "Pretoria South Africa"
-      //   },
-      //   {
-      //     url:"https://images.unsplash.com/photo-1642375112614-33d361858a58?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMnx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60",
-      //     author: "Ogbonda Rhoda",
-      //     location: "London United Kingdom"
-      //   },
-      // ]
-
-    }
+      searchString: "",
+    };
+  },
+  methods: {
+    onEnter() {
+      this.$router.push(`/search?query=${this.searchString}`);
+    },
   },
   mounted() {
-    this.$store.dispatch("fetchImages")
-  }
-}
+    this.$store.dispatch("fetchImages");
+  },
+};
 </script>
 
 <style scoped lang="scss">
-  .search-bg {
-    background-color: #dde2e9;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-    display: flex;
-    justify-content: center;
-  }
-  .search-bar {
-    padding: 1.2rem;
-    width: 80%;
-    border: none;
-    border-radius: 0.3rem;
+.search-bar {
+  padding: 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding-left: 4rem;
+  box-shadow: 0 4px 8px 0 #d3d7dd, 0 6px 20px 0 #d3d7dd;
+  width: 100%;
+}
 
-  }
-   .card-list {
-    display: flex;
-    margin-top: -2rem;
-    justify-content: center;
-  }
+.search-bar::placeholder {
+  color: #616f86;
+  font-weight: 500;
+}
+
+.search-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding-left: 2rem;
+  color: #a4acb9;
+}
+
+.search-bar-wrapper {
+  display: flex;
+  width: 80%;
+  position: relative;
+}
 </style>
