@@ -25,26 +25,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@media only screen and (max-width: 933px) {
-  .loader-list {
-    column-gap: 5rem;
-    column-fill: initial;
-    column-count: 1;
-    padding-left: 2rem;
-    padding-right: 5rem;
-  }
-}
-
-@media only screen and (min-width: 933px) {
-  .loader-list {
-    column-gap: 5rem;
-    column-fill: initial;
-    column-count: 3;
-    padding-left: 2rem;
-    padding-right: 5rem;
-  }
-}
-
 .loader {
   margin-bottom: 2rem;
   vertical-align: top;

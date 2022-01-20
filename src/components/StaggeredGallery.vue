@@ -24,23 +24,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-@media only screen and (max-width: 933px) {
-  .card-list {
-    column-gap: 3rem;
-    column-fill: initial;
-    column-count: 1;
-  }
-}
-
-@media only screen and (min-width: 933px) {
-  .card-list {
-    column-gap: 3rem;
-    column-fill: initial;
-    column-count: 3;
-  }
-}
-
 .card-item {
   margin-bottom: 2rem;
   vertical-align: top;
