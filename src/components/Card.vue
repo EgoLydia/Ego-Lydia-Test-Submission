@@ -2,7 +2,7 @@
   <div>
     <skeleton-loader :isloading="isloading"></skeleton-loader>
     <div v-show="!isloading" @click="openModal" class="card">
-      <img @load="onloaded" class="card-img" :src="image.low" alt="" />
+      <img @load="onloaded" class="card-img" :src="image.low" alt="thumbnail" />
       <div class="card-overlay">
         <div class="card-footer">
           <p class="card-title">{{ author }}</p>
@@ -16,7 +16,7 @@
           <i class="ri-close-line"></i>
         </div>
         <div class="modal-content">
-          <img class="modal-img" :src="image.high" alt="" />
+          <img class="modal-img" :src="image.high" alt="picture" />
         </div>
         <div class="modal-footer">
           <p class="modal-title">{{ author }}</p>
@@ -116,7 +116,7 @@ export default {
 .modal-content {
   background-color: black;
   margin-right: 4rem;
-  max-height: 80%;
+  max-height: 75%;
   overflow: hidden;
   border-top-left-radius: 0.625rem;
   border-top-right-radius: 0.625rem;
