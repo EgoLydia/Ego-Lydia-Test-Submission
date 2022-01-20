@@ -35,10 +35,11 @@ export default new Vuex.Store({
                   low: image.urls.small,
                   high: image.urls.regular,
                 },
-                author: `${image.user.first_name} ${image.user.last_name}`,
-                location: image.user.location,
+                author: image.user.name ? image.user.name : '',
+                location: image.user.location ? image.user.location : '',
               });
             });
+            console.log(response.data);
             context.commit("setImages", images);
             resolve();
           })
@@ -64,8 +65,8 @@ export default new Vuex.Store({
                   low: image.urls.small,
                   high: image.urls.regular,
                 },
-                author: `${image.user.first_name} ${image.user.last_name}`,
-                location: image.user.location,
+                author: image.user.name ? image.user.name : '',
+                location: image.user.location ? image.user.location : '',
               });
             });
             resolve(images);
